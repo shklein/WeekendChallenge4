@@ -7,7 +7,7 @@ myApp.controller('PetsController', ['$scope', '$http', function($scope, $http)
   $scope.pets = ["barnyard", "bird", "cat", "dog", "horse", "pig", "reptile", "smallfurry"];
   $scope.faves = [];
   $scope.currentPet = {};
-
+  $scope.counter = 0;
 
 
 
@@ -30,7 +30,7 @@ myApp.controller('PetsController', ['$scope', '$http', function($scope, $http)
           petID: $scope.animal.id.$t,
           petName: $scope.animal.name.$t,
           imageURL: $scope.animal.media.photos.photo[3].$t,
-          description: $scope.animal.description.$t
+          description: $scope.animal.description.$t.substr(0,100)
         }
         return $scope.currentPet;
 
@@ -48,6 +48,7 @@ myApp.controller('PetsController', ['$scope', '$http', function($scope, $http)
         console.log('POST /pets');
       });
 
+      $scope.counter++;
 
   };
 

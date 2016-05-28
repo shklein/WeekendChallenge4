@@ -12,7 +12,8 @@
     <script type="text/javascript" src="/scripts/controllers/homeController.js"></script>
     <script type="text/javascript" src="/scripts/controllers/petsController.js"></script>
     <script type="text/javascript" src="/scripts/controllers/favesController.js"></script>
-  
+    <script type="text/javascript" src="/scripts/controllers/countController.js"></script>
+
 </head>
 <body ng-app="myApp">
   <header ng-include="'../views/templates/header.html'" class="jumbotron text-center"></header>
@@ -20,7 +21,9 @@
   <div ng-include="'/views/templates/nav.html'"></div>
 
 <main ng-view></main>
+<footer ng-controller="CountController">
 
-<footer ng-include="'../views/templates/footer.html'"></footer>
+<p class="text-center foot">You have {{counter}} favorites.</p>
+</footer>
 </body>
 </html>

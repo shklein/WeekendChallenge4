@@ -1,4 +1,4 @@
-myApp.controller('FavesController', ['$scope', '$http', function($scope, $http)
+myApp.controller('CountController', ['$scope', '$http', function($scope, $http)
 
 {
   $scope.faves = [];
@@ -16,7 +16,6 @@ myApp.controller('FavesController', ['$scope', '$http', function($scope, $http)
           $scope.faves = response.data;
           console.log('GET /pets ', response.data);
           $scope.counter = $scope.faves.length
-          console.log($scope.counter);
         });
 
 
