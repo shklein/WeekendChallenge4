@@ -1,0 +1,9 @@
+<div class="container" ng-controller="PetsController">
+  <p>Select a type of animal, then click the button to meet your new pet.</p>
+  <select ng-model="selectedPet" ng-options="x for x in pets">
+  </select>
+    <button ng-click="getRandomPet()">Find a Pet!</button>
+    <h2>{{animal.name.$t}}</h2>
+    <p>{{animal.description.$t}}</p>
+    <img ng-src="{{animal.media.photos.photo[3].$t}}"></img>
+</div>
