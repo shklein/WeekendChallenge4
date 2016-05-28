@@ -1,29 +1,22 @@
-myApp.controller('DogsController', ['$scope', '$http', function($scope, $http)
+myApp.controller('FavesController', ['$scope', '$http', function($scope, $http)
 
 {
-  var key = 'f36fcd38aad43d04c6b9042c01e91da5';
-  var baseURL = 'http://api.petfinder.com/';
+  $scope.faves = [];
 
+  getFaves();
 
-  $scope.getRandomPet = function() {
-    var query = 'pet.getRandom';
-    query += '?key=' + key;
-    query += '&animal=dog';
-    query += '&output=basic';
-    query += '&format=json';
+  function getFaves() {
+      $http.get('/pets')
+        .then(function (response) {
+          response.data.forEach(function (pet) {
 
-    var request = baseURL + encodeURI(query) + '&callback=JSON_CALLBACK';
+          });
 
-    console.log(request);
+          $scope.faves = response.data;
+          console.log('GET /pets ', response.data);
 
-    $http.jsonp(request).then(
-      function(response) {
-        console.log(response.data);
-        $scope.animal = response.data.petfinder.pet;
-      }
-    )
-  }
+        });
 
-
+    }
 
 }]);

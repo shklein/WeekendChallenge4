@@ -6,4 +6,9 @@
     <h2>{{animal.name.$t}}</h2>
     <p>{{animal.description.$t}}</p>
     <img ng-src="{{animal.media.photos.photo[3].$t}}"></img>
+
+
+<button class ="glyphicon glyphicon-heart btn-lg" ng-click="faveCurrentPet()" alt="Add to Favorites"></button>
+<p>{{petCounter}}</p>
+
 </div>

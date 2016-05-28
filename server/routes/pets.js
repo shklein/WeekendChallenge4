@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var Pets = require('../models/pet');
+var Pet = require('../models/pet');
 
 router.get('/', function (req, res) {
-  Pets.find({}, function (err, pets) {
+  Pet.find({}, function (err, pets) {
     if (err) {
       res.sendStatus(500);
       return;
