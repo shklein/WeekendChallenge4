@@ -1,13 +1,12 @@
 <div class="container" ng-controller="PetsController">
-  <p>Select a type of animal, then click the button to meet your new pet.</p>
-  <select ng-model="selectedPet" ng-options="x for x in pets">
-  </select>
-    <button ng-click="getRandomPet()">Find a Pet!</button>
+  <p>You have {{counter}} favorites.</p>
+  <select ng-model="selectedPet" ng-options="x for x in pets" ng-change="getRandomPet()"></select>
+  <p>Select a type of animal to see a random pet!</p>
+
     <h2>{{animal.name.$t}}</h2>
     <p>{{animal.description.$t}}</p>
     <img ng-src="{{animal.media.photos.photo[3].$t}}"></img>
 
-
-<button class ="glyphicon glyphicon-heart btn-lg" ng-click="faveCurrentPet()" alt="Add to Favorites"></button>
+<button class ="glyphicon glyphicon-heart btn-lg" ng-click="faveCurrentPet()" aria-label="Favorite this Pet">
 
 </div>

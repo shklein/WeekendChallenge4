@@ -12,6 +12,10 @@ img.displayed {
   text-align: center;
 }
 
+select {
+  margin: 5px;
+}
+
 .container button {
   display: block;
   margin-top: 20px;
@@ -26,6 +30,15 @@ list-style-type: none;
 .foot {
   font-weight: bold;
 }
-.heart {
-  align: center;
+
+p {
+  text-align: center;
+  font-weight: bold;
+}
+
+.container-fluid p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 10px;
+  font-weight: normal;
 }

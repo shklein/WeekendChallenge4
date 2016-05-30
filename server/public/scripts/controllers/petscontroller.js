@@ -9,7 +9,7 @@ myApp.controller('PetsController', ['$scope', '$http', function($scope, $http)
   $scope.currentPet = {};
   $scope.counter = 0;
 
-
+getFaves();
 
   $scope.getRandomPet = function() {
 
@@ -46,10 +46,26 @@ myApp.controller('PetsController', ['$scope', '$http', function($scope, $http)
     $http.post('/pets', data)
       .then(function () {
         console.log('POST /pets');
+        getFaves();
       });
 
-      $scope.counter++;
+
 
   };
+
+
+    function getFaves() {
+        $http.get('/pets')
+          .then(function (response) {
+            response.data.forEach(function (pet) {
+
+            });
+
+            $scope.faves = response.data;
+            $scope.counter = $scope.faves.length
+          });
+
+
+      }
 
 }]);
