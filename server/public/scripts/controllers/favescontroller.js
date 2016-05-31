@@ -1,24 +1,18 @@
-myApp.controller('FavesController', ['$scope', '$http', function($scope, $http)
+myApp.controller('FavesController', ['$scope', '$http', 'DataFactory',  function($scope, $http, DataFactory)
 
 {
+  $scope.dataFactory = DataFactory;
   $scope.faves = [];
   $scope.counter = 0;
 
-  getFaves();
-
-  function getFaves() {
-      $http.get('/pets')
-        .then(function (response) {
-          response.data.forEach(function (pet) {
-
-          });
-
-          $scope.faves = response.data;
-          $scope.counter = $scope.faves.length
-        });
-
-
-    }
-
+  if ($scope.dataFactory.factoryGetFavorites() === undefined) {
+    $scope.dataFactory.factoryRefreshFavoriteData().then(function() {
+      $scope.faves = $scope.dataFactory.factoryGetFavorites();
+      $scope.counter = $scope.faves.length;
+    });
+  } else {
+    $scope.faves = $scope.dataFactory.factoryGetFavorites();
+    $scope.counter = $scope.faves.length;
+  }
 
 }]);

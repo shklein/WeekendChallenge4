@@ -1,6 +1,7 @@
-myApp.controller('PetsController', ['$scope', '$http', function($scope, $http)
+myApp.controller('PetsController', ['$scope', '$http', 'DataFactory', function($scope, $http, DataFactory)
 
 {
+  $scope.dataFactory = DataFactory;
   var key = 'f36fcd38aad43d04c6b9042c01e91da5';
   var baseURL = 'http://api.petfinder.com/';
 
@@ -9,7 +10,13 @@ myApp.controller('PetsController', ['$scope', '$http', function($scope, $http)
   $scope.currentPet = {};
   $scope.counter = 0;
 
-getFaves();
+  if($scope.dataFactory.factoryGetFavorites() === undefined) {
+      $scope.dataFactory.factoryRefreshFavoriteData().then(function() {
+        $scope.counter = $scope.dataFactory.factoryGetFavorites().length;
+      });
+    } else {
+      $scope.counter = $scope.dataFactory.factoryGetFavorites().length;
+    }
 
   $scope.getRandomPet = function() {
 
@@ -45,11 +52,10 @@ getFaves();
 
   $scope.faveCurrentPet = function () {
     var data = $scope.currentPet;
-    $http.post('/pets', data)
-      .then(function () {
-        console.log('POST /pets');
-        getFaves();
-      });
+    $scope.dataFactory.factorySaveFavorite(data).then(function() {
+      console.log('done saving');
+      $scope.counter = $scope.dataFactory.factoryGetFavorites().length;
+    });
 
 
 
@@ -63,8 +69,7 @@ getFaves();
 
             });
 
-            $scope.faves = response.data;
-            $scope.counter = $scope.faves.length
+            $scope.counter = $response.data.length;
           });
 
 
