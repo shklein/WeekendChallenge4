@@ -1,5 +1,5 @@
 <div class="container" ng-controller="PetsController">
-  <p>You have {{counter}} favorites.</p>
+  <p>Favorite counter: {{counter}}</p>
   <select ng-model="selectedPet" ng-options="x for x in pets" ng-change="getRandomPet()"></select>
   <p>Select a type of animal to see a random pet!</p>
 
