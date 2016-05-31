@@ -30,8 +30,10 @@ getFaves();
           petID: $scope.animal.id.$t,
           petName: $scope.animal.name.$t,
           imageURL: $scope.animal.media.photos.photo[3].$t,
-          description: $scope.animal.description.$t.substr(0,100)
+          description: $scope.animal.description.$t.substr(0,100),
+          petBreed: $scope.animal.breeds.breed.$t
         }
+
         return $scope.currentPet;
 
       }

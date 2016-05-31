@@ -1,7 +1,7 @@
 <div ng-controller="FavesController">
 <p>Favorite counter: {{counter}}</p>
 </div>
-    <div class="container" ng-controller="FavesController" ng-repeat="pet in faves">
+    <div class="container" ng-controller="FavesController" ng-repeat="pet in faves | orderBy: 'petBreed'">
         <h2>{{pet.petName}}</h2>
         <p>{{pet.description}}</p>
         <img ng-src="{{pet.imageURL}}"></img>
